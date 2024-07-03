@@ -1,21 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
 .queryBody {
     background-color: lightgray;
     justify-content: space-evenly;
     align-items: center;
-    box-sizing: border-box;
 }
 
-/* .divGridRow {
-    background-color: lightblue;
-} */
+.divGridRow {
+    display: flex;
+}
 
 .divGridBox {
-    /* background-color: lightseagreen; */
     justify-content: space-between;
     align-items: center;
-    display: inline-grid;
+    display: inline;
+    transition: all 3600s ease-out;
 }
 
 .divGridBox:hover {
     background-color: lightseagreen;
+    transition: all 0.01s ease-out;
+}
+
+[class *= "button"] {
+    margin-bottom: 1em;
+    margin-right: 1em;
 }
