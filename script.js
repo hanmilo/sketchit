@@ -18,18 +18,40 @@ function buttonAppend() {
     queryBody.appendChild(divCanvas);
 };
 
+function stringPixel(pixel_value) {
+    pixel_value.toString();
+    return pixel_value += "px";
+};
+
+function stringPercent(pixel_value) {
+    pixel_value.toString();
+    return pixel_value += "%";
+};
+
+function divGridRow_Resize(pixel_xy) {
+    let heightCanvas = 500;
+    let widthCanvas = 500;
+    let heightGridRow = heightCanvas/pixel_xy;
+    let widthGridRow = 100;
+    
+    divCanvas.style["height"] = stringPixel(heightCanvas);
+    divCanvas.style["width"] = stringPixel(widthCanvas);
+    divGridRow.style["height"] = stringPixel(heightGridRow);
+    divGridRow.style["width"] = stringPercent(widthGridRow);
+};
+
 const queryBody = document.querySelector("body");
 queryBody.classList.add("queryBody");
 
 const divCanvas = document.createElement("div");
 divCanvas.classList.add("divCanvas");
-divCanvas.style["height"] = "500px";
-divCanvas.style["width"] = "500px";
+// divCanvas.style["height"] = "500px";
+// divCanvas.style["width"] = "500px";
 
 const divGridRow = document.createElement("div");
 divGridRow.classList.add("divGridRow");
-divGridRow.style["height"] = "100%";
-divGridRow.style["width"] = "100%";
+// divGridRow.style["height"] = "15.625px";
+// divGridRow.style["width"] = "100%";
 // divGridRow.style["border"] = "1px dotted black";
 
 const divGridBox = document.createElement("div");
@@ -50,6 +72,7 @@ buttonNewSketch.addEventListener("click", () => {
     }
     holdGridPixel = selectGridPixel;
 
+    divGridRow_Resize(selectGridPixel);
     buttonAppend();
     gridGridGen(selectGridPixel);
 });
@@ -60,7 +83,6 @@ const buttonResetSketch = document.createElement("button");
 buttonResetSketch.classList.add("buttonResetSketch");
 buttonResetSketch.textContent = "Reset Sketch";
 buttonResetSketch.addEventListener("click", () => {
-    
     buttonAppend();
     gridGridGen(holdGridPixel);
 });

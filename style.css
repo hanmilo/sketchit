@@ -16,12 +16,12 @@
     justify-content: space-between;
     align-items: center;
     display: inline;
-    transition: all 3600s ease-out;
+    transition: all 9999s ease-out;
 }
 
 .divGridBox:hover {
     background-color: lightseagreen;
-    transition: all 0.01s ease-out;
+    transition: all 0s ease-out;
 }
 
 [class *= "button"] {
