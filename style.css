@@ -20,8 +20,13 @@
 }
 
 .divGridBox:hover {
-    background-color: lightseagreen;
     transition: all 0s ease-out;
+    background-color: rgb(121 121 221 / 100%);
+    background-image: linear-gradient(
+    90deg,
+    transparent 50%,
+    rgb(255 255 255 / 50%) 50%
+  );
 }
 
 [class *= "button"] {

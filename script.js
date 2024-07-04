@@ -45,20 +45,35 @@ queryBody.classList.add("queryBody");
 
 const divCanvas = document.createElement("div");
 divCanvas.classList.add("divCanvas");
-// divCanvas.style["height"] = "500px";
-// divCanvas.style["width"] = "500px";
 
 const divGridRow = document.createElement("div");
 divGridRow.classList.add("divGridRow");
-// divGridRow.style["height"] = "15.625px";
-// divGridRow.style["width"] = "100%";
-// divGridRow.style["border"] = "1px dotted black";
 
 const divGridBox = document.createElement("div");
 divGridBox.classList.add("divGridBox");
 divGridBox.style["border"] = "1px dotted gray";
 divGridBox.style["height"] = "100%";
 divGridBox.style["width"] = "100%";
+
+// const queryAllGridBox = document.querySelectorAll(".divGridRow");
+// queryAllGridBox.forEach(divGridBox => {
+//     divGridBox.addEventListener("mouseenter", () => {
+//         divGridBox.style["backgroundColor"] = "lightseagreen";
+//         console.log("mouseenter");
+//     });
+// });
+
+// divGridBox.addEventListener("mouseover", () => {
+//     divGridBox.style.backgroundColor = "lightskyblue";
+//     // divGridBox.style["background-color"] = () => {
+//     //     var letters = '0123456789ABCDEF';
+//     //     var color = '#';
+//     //     for (var i = 0; i < 6; i++) {
+//     //         color += letters[Math.floor(Math.random() * 16)];
+//     //     };
+//     //     return color;
+//     // };
+// });
 
 let holdGridPixel = 0;
 
