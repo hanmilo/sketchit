@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: lightgray;
+}
+
+.divCanvas {
+    display: flex;
+    background-color: white;
+    border: 1px solid lightseagreen;
+    border-radius: 4px;
+    height: 500px;
+    width: 500px;
+}
+
+.divGridRow {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.divGridBox {
+    flex: auto;
+    border: 1px dotted rgb(121 121 221 / 50%);
+}
+
