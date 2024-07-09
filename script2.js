@@ -13,7 +13,7 @@ buttonResetSketch.className = "buttonResetSketch";
 buttonResetSketch.textContent = "Reset Sketch";
 
 let userPixelSelect = 32;
-let userColorSelect = "lightseagreen";
+// let userColorSelect = "rgb(";
 
 function appendBody() {
     console.log("appendBody");
@@ -25,27 +25,37 @@ function stringPixel(PixelValue) {
     console.log("stringPixel");
     PixelValue.toString();
     PixelValue += "px";
+};
+
+function randomColor() {
+    return Math.floor(Math.random() * 255 + 1);
 }
 
-function genCanvas(PixelSelect, ColorSelect) {
+function randomColorSelect() {
+    let ColorSelect = "rgb(";
+
+    for (i = 1; i <= 3; i++) {
+        ColorSelect += randomColor() + " ";
+    };
+    ColorSelect += "/ 90%)";
+    console.log(ColorSelect);
+    return ColorSelect;
+}
+
+function genCanvas(PixelSelect) {
     console.log("genCanvas: Start");
     appendBody();
-    // sizingCanvas(PixelSelect);
+
     for (let y = 1; y <= PixelSelect; y++) {
         const divGridRow = document.createElement("div");
         divGridRow.className = "divGridRow";
-        // divGridRow.style["height"] = stringPixel(500/PixelSelect);
-        // divGridRow.style["width"] = "100%";
-        
         for (let x = 1; x <= PixelSelect; x++) {
-            const divGridBox = document.createComment("div");
+            const divGridBox = document.createElement("div");
             divGridBox.className = "divGridBox";
-            // divGridBox.style["height"] = "100%";
-            // divGridBox.style["width"] = "100%";
+
             divGridBox.addEventListener("mouseover", () => {
-                divGridBox.style["background-color"] = ColorSelect;
-                divGridBox.style["border-color"] = ColorSelect;
-                divGridBox.style["border"] = "1px dotted";
+                divGridBox.style["background-color"] = randomColorSelect();
+                divGridBox.style["border"] = "1px hidden inherit";
             });
             divGridRow.appendChild(divGridBox);
         }
@@ -53,33 +63,20 @@ function genCanvas(PixelSelect, ColorSelect) {
     }
     queryBody.appendChild(divCanvas);
     console.log("genCanvas: End");
-}
-
-// function sizingCanvas(PixelSelect) {
-//     console.log("sizingCanvas");
-//     let heightCanvas = 500;
-//     let widthCanvas = 500;
-//     // let heightGridRow = heightCanvas/PixelSelect;
-//     // let widthGridRow = "100%";
-
-//     divCanvas.style["height"] = stringPixel(heightCanvas);
-//     divCanvas.style["width"] = stringPixel(widthCanvas);
-//     // divGridRow.style["height"] = stringPixel(heightGridRow);
-//     // divGridRow.style["width"] = widthGridRow;
-//     // divGridBox.style["height"] = "100%";
-//     // divGridBox.style["width"] = "100%";
-// };
+};
 
 buttonNewSketch.addEventListener("click", () => {
+    divCanvas.textContent = "";
     userPixelSelect = prompt("How many pixels per row & column? (Max: 100)", 32);
-    if (userPixelSelect > 100) {
+    if ((userPixelSelect > 100) || (isNaN(userPixelSelect))) {
         userPixelSelect = 100;
     };
-    genCanvas(userPixelSelect, userColorSelect);
+    genCanvas(userPixelSelect);
 });
 
 buttonResetSketch.addEventListener("click", () => {
-    genCanvas(userPixelSelect, userColorSelect);
+    divCanvas.textContent = "";
+    genCanvas(userPixelSelect);
 });
 
 appendBody();
