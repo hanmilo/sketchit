@@ -12,8 +12,8 @@ const buttonResetSketch = document.createElement("button");
 buttonResetSketch.className = "buttonResetSketch";
 buttonResetSketch.textContent = "Reset Sketch";
 
-let userPixelSelect = 32;
-// let userColorSelect = "rgb(";
+let userPixelSelect = 64;
+// let userColorSelect = "lightseagreen";
 
 function appendBody() {
     console.log("appendBody");
@@ -53,10 +53,11 @@ function genCanvas(PixelSelect) {
             const divGridBox = document.createElement("div");
             divGridBox.className = "divGridBox";
 
-            divGridBox.addEventListener("mouseover", () => {
+            divGridBox.addEventListener("mousemove", () => {
                 divGridBox.style["background-color"] = randomColorSelect();
                 divGridBox.style["border"] = "1px hidden inherit";
             });
+
             divGridRow.appendChild(divGridBox);
         }
         divCanvas.appendChild(divGridRow);
@@ -67,7 +68,7 @@ function genCanvas(PixelSelect) {
 
 buttonNewSketch.addEventListener("click", () => {
     divCanvas.textContent = "";
-    userPixelSelect = prompt("How many pixels per row & column? (Max: 100)", 32);
+    userPixelSelect = prompt("How many pixels per row & column? (Max: 100)", 64);
     if ((userPixelSelect > 100) || (isNaN(userPixelSelect))) {
         userPixelSelect = 100;
     };
