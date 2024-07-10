@@ -16,15 +16,22 @@ let userPixelSelect = 64;
 // let userColorSelect = "lightseagreen";
 
 function appendBody() {
-    console.log("appendBody");
+    // console.log("appendBody");
     queryBody.appendChild(buttonNewSketch);
     queryBody.appendChild(buttonResetSketch);
 };
 
-function stringPixel(PixelValue) {
-    console.log("stringPixel");
-    PixelValue.toString();
-    PixelValue += "px";
+// function stringPixel(PixelValue) {
+//     console.log("stringPixel");
+//     PixelValue.toString();
+//     PixelValue += "px";
+// };
+
+function stringPercent(OpacityValue) {
+    let StoreValue = OpacityValue;
+    StoreValue.toString();
+    StoreValue += "%";
+    return StoreValue;
 };
 
 function randomColor() {
@@ -37,13 +44,13 @@ function randomColorSelect() {
     for (i = 1; i <= 3; i++) {
         ColorSelect += randomColor() + " ";
     };
-    ColorSelect += "/ 90%)";
-    console.log(ColorSelect);
+    ColorSelect += "/ 50%)";
+    // console.log(ColorSelect);
     return ColorSelect;
 }
 
 function genCanvas(PixelSelect) {
-    console.log("genCanvas: Start");
+    // console.log("genCanvas: Start");
     appendBody();
 
     for (let y = 1; y <= PixelSelect; y++) {
@@ -52,10 +59,16 @@ function genCanvas(PixelSelect) {
         for (let x = 1; x <= PixelSelect; x++) {
             const divGridBox = document.createElement("div");
             divGridBox.className = "divGridBox";
+            let opacityPercent = 40;
 
-            divGridBox.addEventListener("mousemove", () => {
+            divGridBox.addEventListener("mouseover", () => {
                 divGridBox.style["background-color"] = randomColorSelect();
                 divGridBox.style["border"] = "1px hidden inherit";
+                divGridBox.style["opacity"] = stringPercent(opacityPercent);
+                console.log(opacityPercent);
+                if (opacityPercent < 100) {
+                    opacityPercent += 10;
+                };
             });
 
             divGridRow.appendChild(divGridBox);
@@ -63,7 +76,7 @@ function genCanvas(PixelSelect) {
         divCanvas.appendChild(divGridRow);
     }
     queryBody.appendChild(divCanvas);
-    console.log("genCanvas: End");
+    // console.log("genCanvas: End");
 };
 
 buttonNewSketch.addEventListener("click", () => {
